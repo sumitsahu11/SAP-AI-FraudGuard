@@ -1,0 +1,10 @@
+flask
+pandas
+numpy
+openpyxl
+scikit-learn
+sentence-transformers
+faiss-cpu
+pdfplumber
+python-docx
+python-pptx

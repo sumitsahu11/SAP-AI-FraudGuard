@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SAP AI FraudGuard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Main dashboard styles -->
+  <link rel="stylesheet" href="/static/css/style.css" />
+
+  <!-- Doc Summarizer scoped CSS (ds-*) -->
+  <style>
+  /* ── Root / layout ───────────────────────────────────────────────── */
+  .ds-tab-root {
+    padding: 28px 24px;
+    background: transparent;
+    color: inherit;
+    font-family: inherit;
+    box-sizing: border-box;
+  }
+  .ds-page-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  .ds-page-title {
+    margin: 0 0 4px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #e0eaf6;
+    letter-spacing: -0.3px;
+  }
+  .ds-page-subtitle {
+    margin: 0;
+    font-size: 13px;
+    color: #6b83a0;
+    max-width: 520px;
+    line-height: 1.6;
+  }
+  .ds-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #0f2035;
+    border: 1px solid #1e3a5c;
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: #4a90d9;
+    white-space: nowrap;
+    margin-top: 4px;
+  }
+
+  .ds-layout {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 22px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .ds-layout { grid-template-columns: 1fr; }
+  }
+
+  /* ── Cards ───────────────────────────────────────────────────────── */
+  .ds-card {
+    background: #0f1e30;
+    border: 1px solid #1c3048;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .ds-card-header {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 14px 18px;
+    border-bottom: 1px solid #1c3048;
+    background: #0d1a29;
+  }
+  .ds-card-icon { font-size: 16px; }
+  .ds-card-title {
+    flex: 1;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #8aaccc;
+  }
+
+  /* ── Drop zone ───────────────────────────────────────────────────── */
+  .ds-dropzone {
+    margin: 18px;
+    border: 2px dashed #1e3a5c;
+    border-radius: 10px;
+    transition: border-color 0.2s, background 0.2s;
+    cursor: pointer;
+  }
+  .ds-dropzone:hover, .ds-dz-active {
+    border-color: #3b7ff5;
+    background: #0d1e32;
+  }
+  .ds-dz-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 30px 16px 24px;
+    text-align: center;
+  }
+  .ds-dz-icon { color: #2d5888; margin-bottom: 4px; }
+  .ds-dz-primary { margin: 0; font-size: 14px; font-weight: 600; color: #b0c8e0; }
+  .ds-dz-secondary { margin: 0; font-size: 12px; color: #4a6a88; }
+  .ds-browse-btn {
+    display: inline-block;
+    padding: 8px 20px;
+    background: #163356;
+    border: 1px solid #2a5080;
+    border-radius: 6px;
+    color: #6ab0f5;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin: 4px 0;
+  }
+  .ds-browse-btn:hover { background: #1e4070; }
+  .ds-dz-formats { margin: 0; font-size: 11px; color: #3a5570; letter-spacing: 0.04em; }
+
+  /* ── Queue table ─────────────────────────────────────────────────── */
+  #dsQueueSection { margin: 0 18px 16px; }
+  .ds-queue-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .ds-queue-title { font-size: 12px; font-weight: 700; color: #5a7a98; text-transform: uppercase; letter-spacing: 0.06em; }
+  .ds-link-btn {
+    background: none; border: none; cursor: pointer;
+    font-size: 12px; color: #c0503a; text-decoration: underline; padding: 0;
+  }
+  .ds-queue-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .ds-queue-table th {
+    background: #0b1928;
+    color: #4a6a88;
+    text-align: left;
+    padding: 6px 10px;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid #1c3048;
+  }
+  .ds-queue-table td {
+    padding: 8px 10px;
+    color: #9ab8d0;
+    border-bottom: 1px solid #111f2f;
+    vertical-align: middle;
+  }
+  .ds-queue-table tr:last-child td { border-bottom: none; }
+  .ds-ext-tag {
+    display: inline-block;
+    padding: 1px 7px;
+    border-radius: 4px;
+    background: #132840;
+    border: 1px solid #1e3a5c;
+    color: #4a90d9;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .ds-rm-btn {
+    background: none; border: none; cursor: pointer;
+    color: #6b3030; font-size: 16px; font-weight: 700;
+    padding: 0 4px; line-height: 1;
+    transition: color 0.15s;
+  }
+  .ds-rm-btn:hover { color: #e05555; }
+
+  /* ── Options ─────────────────────────────────────────────────────── */
+  .ds-options-section { margin: 0 18px 18px; }
+  .ds-option-row { display: flex; flex-direction: column; gap: 8px; }
+  .ds-opt-label { font-size: 12px; font-weight: 600; color: #5a7a98; text-transform: uppercase; letter-spacing: 0.06em; }
+  .ds-opt-hint { font-size: 11px; color: #385060; font-weight: 400; text-transform: none; letter-spacing: 0; }
+  .ds-opt-control { display: flex; align-items: center; gap: 12px; }
+  .ds-opt-control input[type=range] {
+    flex: 1; accent-color: #3b7ff5;
+    background: transparent; cursor: pointer;
+  }
+  .ds-opt-control input[type=number] {
+    width: 56px; padding: 5px 8px;
+    border: 1px solid #1c3048; border-radius: 6px;
+    background: #0b1928; color: #c0d8f0;
+    font-size: 13px; text-align: center;
+  }
+
+  /* ── Run button ──────────────────────────────────────────────────── */
+  .ds-run-btn {
+    display: block;
+    width: calc(100% - 36px);
+    margin: 0 18px 18px;
+    padding: 12px;
+    background: linear-gradient(135deg, #1a4fa0, #2a7ff0);
+    border: none; border-radius: 8px;
+    color: #fff; font-size: 14px; font-weight: 700;
+    cursor: pointer; letter-spacing: 0.03em;
+    transition: opacity 0.2s, box-shadow 0.2s;
+    box-shadow: 0 3px 12px rgba(42,127,240,0.25);
+  }
+  .ds-run-btn:not(:disabled):hover {
+    opacity: 0.9;
+    box-shadow: 0 4px 18px rgba(42,127,240,0.4);
+  }
+  .ds-run-btn:disabled { opacity: 0.35; cursor: default; box-shadow: none; }
+
+  /* ── Progress bar ────────────────────────────────────────────────── */
+  .ds-progress-row { margin: 0 18px 18px; display: flex; flex-direction: column; gap: 7px; }
+  .ds-prog-bar-wrap {
+    height: 4px; border-radius: 2px; background: #0d1a29; overflow: hidden;
+  }
+  .ds-prog-bar {
+    height: 100%; width: 0%; border-radius: 2px;
+    background: linear-gradient(90deg, #1a5ca8, #3b9af5);
+    animation: ds-progpulse 1.5s ease-in-out infinite;
+  }
+  @keyframes ds-progpulse {
+    0%   { width: 15%; }
+    50%  { width: 80%; }
+    100% { width: 15%; }
+  }
+  .ds-prog-label { font-size: 12px; color: #4a6a88; }
+
+  /* ── Results column ──────────────────────────────────────────────── */
+  .ds-results-col { display: flex; flex-direction: column; gap: 18px; }
+
+  /* Empty state */
+  .ds-empty-state {
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; gap: 8px;
+    background: #0f1e30; border: 1px dashed #1c3048; border-radius: 12px;
+    padding: 60px 30px; text-align: center;
+  }
+  .ds-empty-icon { font-size: 40px; opacity: 0.4; }
+  .ds-empty-title { margin: 0; font-size: 16px; font-weight: 600; color: #3a5570; }
+  .ds-empty-sub   { margin: 0; font-size: 13px; color: #2d4458; }
+
+  /* Error banner */
+  .ds-error-banner {
+    display: flex; align-items: flex-start; gap: 10px;
+    background: #1a0d0d; border: 1px solid #4a1515; border-radius: 8px;
+    padding: 13px 16px; color: #c06060; font-size: 13px;
+  }
+  .ds-err-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+  /* Metrics row */
+  .ds-metrics-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  @media (max-width: 700px) { .ds-metrics-row { grid-template-columns: repeat(2, 1fr); } }
+  .ds-metric-card {
+    background: #0f1e30; border: 1px solid #1c3048; border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .ds-metric-label { font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.07em; color: #4a6a88; margin-bottom: 6px; }
+  .ds-metric-value { font-size: 22px; font-weight: 700; color: #5aa8f0; line-height: 1; }
+  .ds-metric-sub   { font-size: 11px; color: #3a5570; margin-top: 3px; }
+
+  /* Result cards */
+  .ds-result-card { /* inherits .ds-card */ }
+
+  /* Per-doc */
+  .ds-perdoc-table {
+    width: 100%; border-collapse: collapse; font-size: 13px;
+  }
+  .ds-perdoc-table th {
+    background: #0b1928; color: #4a6a88; text-align: left;
+    padding: 8px 14px; font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    border-bottom: 1px solid #1c3048;
+  }
+  .ds-perdoc-table td {
+    padding: 10px 14px; color: #8aaccc; border-bottom: 1px solid #0d1a29;
+    vertical-align: top;
+  }
+  .ds-perdoc-table tr:last-child td { border-bottom: none; }
+  .ds-perdoc-pts { margin: 4px 0 0; padding-left: 16px; color: #6a8aaa; font-size: 12px; line-height: 1.6; }
+
+  /* Summary prose */
+  .ds-summary-prose {
+    padding: 18px;
+    font-size: 14px;
+    line-height: 1.85;
+    color: #c0d8f0;
+    white-space: pre-wrap;
+    border-top: none;
+  }
+
+  /* Key list */
+  .ds-key-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .ds-key-list li {
+    display: flex;
+    gap: 12px;
+    padding: 12px 18px;
+    border-bottom: 1px solid #0d1a29;
+    font-size: 13px;
+    color: #9ab8d0;
+    line-height: 1.6;
+    align-items: flex-start;
+    transition: background 0.15s;
+  }
+  .ds-key-list li:last-child { border-bottom: none; }
+  .ds-key-list li:hover { background: #0d1a29; }
+  .ds-key-num {
+    flex-shrink: 0; width: 22px; height: 22px;
+    background: #132840; border: 1px solid #1e3a5c;
+    border-radius: 50%; font-size: 11px; font-weight: 700;
+    color: #4a90d9; display: flex; align-items: center; justify-content: center;
+    margin-top: 1px;
+  }
+
+  /* Copy btn */
+  .ds-copy-btn {
+    margin-left: auto;
+    background: #0d1a29; border: 1px solid #1e3a5c;
+    border-radius: 5px; padding: 4px 12px;
+    font-size: 12px; color: #4a90d9; cursor: pointer;
+    transition: background 0.2s;
+  }
+  .ds-copy-btn:hover { background: #132840; }
+
+  /* Point count tag */
+  .ds-point-count {
+    margin-left: auto;
+    background: #132840; border: 1px solid #1e3a5c;
+    border-radius: 20px; padding: 2px 10px;
+    font-size: 11px; color: #4a90d9; font-weight: 700;
+  }
+  </style>
+</head>
+<body>
+
+  <!-- Toasts -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Global loading overlay -->
+  <div id="loading-overlay" class="loading-overlay">
+    <div class="loading-card">
+      <div class="loading-spinner-lg"></div>
+      <div class="loading-title">Processing…</div>
+      <div class="loading-sub"></div>
+    </div>
+  </div>
+
+  <div class="app-shell">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <div class="logo-badge">
+          <div class="logo-icon">⚡</div>
+          <div class="logo-text">
+            <div class="logo-name">SAP AI FraudGuard</div>
+            <div class="logo-sub">Invoice Intelligence</div>
+          </div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">Core</div>
+        <div class="nav-item active" data-section="upload">
+          <div class="nav-item-icon">⬆</div>
+          <div class="nav-item-text">Upload &amp; Analyse</div>
+        </div>
+        <div class="nav-item" data-section="invoices">
+          <div class="nav-item-icon">📄</div>
+          <div class="nav-item-text">Risky Invoices</div>
+        </div>
+        <div class="nav-item" data-section="vendor">
+          <div class="nav-item-icon">🏢</div>
+          <div class="nav-item-text">Vendor Risk 360°</div>
+        </div>
+        <div class="nav-item" data-section="ap">
+          <div class="nav-item-icon">📊</div>
+          <div class="nav-item-text">AP Control</div>
+        </div>
+
+        <div class="nav-section-label">AI & Docs</div>
+        <div class="nav-item" data-section="rag">
+          <div class="nav-item-icon">🤖</div>
+          <div class="nav-item-text">AI Query Engine</div>
+        </div>
+        <div class="nav-item" data-section="docfinder">
+          <div class="nav-item-icon">🗂</div>
+          <div class="nav-item-text">DocFinder</div>
+        </div>
+        <div class="nav-item" data-section="docsummarizer">
+          <div class="nav-item-icon">📝</div>
+          <div class="nav-item-text">Doc Summarizer</div>
+        </div>
+
+        <div class="nav-section-label">Simulation</div>
+        <div class="nav-item" data-section="simulator">
+          <div class="nav-item-icon">🧮</div>
+          <div class="nav-item-text">What‑If Simulator</div>
+        </div>
+        <div class="nav-item" data-section="playbook">
+          <div class="nav-item-icon">📌</div>
+          <div class="nav-item-text">Fraud Playbook</div>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-card">
+          <div class="user-avatar">SK</div>
+          <div>
+            <div class="user-name">Sumit Kumar</div>
+            <div class="user-role">AP Risk Analyst</div>
+          </div>
+        </div>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <div id="topbar-title" class="topbar-title">Invoice Analysis</div>
+          <div id="topbar-breadcrumb" class="topbar-breadcrumb">Upload &amp; Process</div>
+        </div>
+        <div class="topbar-right">
+          <div class="status-pill">
+            <span class="status-pill-dot"></span>
+            <span>FraudGuard Online</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <!-- Upload & Process -->
+        <section class="page-section active" id="section-upload">
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <div class="card-title">
+                    <div class="card-title-icon">⬆</div>
+                    Upload Invoice File
+                  </div>
+                  <div class="card-subtitle">Upload a consolidated invoice file to analyse fraud risk.</div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div id="upload-zone" class="upload-zone">
+                  <input type="file" id="file-input" />
+                  <div class="upload-icon">📁</div>
+                  <div class="upload-title">Drop file here or click to browse</div>
+                  <div class="upload-sub">
+                    <span id="upload-file-label">No file selected</span>
+                  </div>
+                  <div class="upload-formats">
+                    <span class="upload-format-badge">CSV</span>
+                    <span class="upload-format-badge">XLSX</span>
+                    <span class="upload-format-badge">XLS</span>
+                  </div>
+                </div>
+                <div class="mt-16">
+                  <button class="btn btn-primary" onclick="processInvoices()">Run AI Analysis</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <div class="card-title-icon">📊</div>
+                  Summary
+                </div>
+              </div>
+              <div class="card-body" id="upload-results">
+                <div class="empty-state">
+                  <div class="empty-state-icon">📂</div>
+                  <div class="empty-state-title">No file processed yet</div>
+                  <div class="empty-state-sub">
+                    Upload an invoice dataset on the left to see AI‑driven risk insights.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Risky Invoices -->
+        <section class="page-section" id="section-invoices">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">
+                <div class="card-title-icon">📄</div>
+                Risky Invoices
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="data-table-wrap">
+                <table class="data-table">
+                  <thead>
+                  <tr>
+                    <th>Invoice ID</th>
+                    <th>Vendor</th>
+                    <th>Invoice Number</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Risk</th>
+                    <th>Score</th>
+                    <th>Reason</th>
+                  </tr>
+                  </thead>
+                  <tbody id="risky-invoices-body">
+                  <tr>
+                    <td colspan="8" style="text-align:center;padding:32px;color:var(--ink-light)">
+                      No data loaded. Run analysis in "Upload & Analyse".
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Vendor Risk -->
+        <section class="page-section" id="section-vendor">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">
+                <div class="card-title-icon">🏢</div>
+                Vendor Risk 360°
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="data-table-wrap">
+                <table class="data-table">
+                  <thead>
+                  <tr>
+                    <th>Vendor</th>
+                    <th>Total Invoices</th>
+                    <th>Total Amount</th>
+                    <th>Risky Invoices</th>
+                    <th>High Risk</th>
+                    <th>Risk %</th>
+                    <th>Avg Score</th>
+                    <th>Tier</th>
+                  </tr>
+                  </thead>
+                  <tbody id="vendor-table-body">
+                  <tr>
+                    <td colspan="8" style="text-align:center;padding:32px;color:var(--ink-light)">
+                      Vendor data will appear after invoice analysis.
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- AP Control -->
+        <section class="page-section" id="section-ap">
+          <div class="kpi-row" id="ap-kpis"></div>
+
+          <div class="grid-2 mt-20">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <div class="card-title-icon">🍩</div>
+                  Risk Distribution
+                </div>
+              </div>
+              <div class="card-body" id="ap-distribution">
+                <div class="empty-state">
+                  <div class="empty-state-icon">📊</div>
+                  <div class="empty-state-title">No data</div>
+                  <div class="empty-state-sub">Run invoice analysis first.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <div class="card-title-icon">📈</div>
+                  Monthly Trend
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="data-table-wrap">
+                  <table class="data-table">
+                    <thead>
+                    <tr>
+                      <th>Month</th>
+                      <th>Invoices</th>
+                      <th>Total Amount</th>
+                      <th>Risky</th>
+                      <th>High Risk</th>
+                    </tr>
+                    </thead>
+                    <tbody id="ap-trend-body"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mt-20">
+            <div class="card-header">
+              <div class="card-title">
+                <div class="card-title-icon">🏦</div>
+                Top Risky Vendors
+              </div>
+            </div>
+            <div class="card-body" id="ap-top-vendors"></div>
+          </div>
+
+          <!-- ── AP Plotly Charts Section ─────────────────────────────── -->
+          <div id="ap-charts-container" style="margin-top: 24px;">
+
+            <!-- Header row -->
+            <div style="display:flex; align-items:center; justify-content:space-between;
+                        margin-bottom:20px; flex-wrap:wrap; gap:10px;">
+              <div>
+                <h3 style="margin:0; font-size:18px; font-weight:600; color:#1e293b;">
+                  📊 AP Control Analytics
+                </h3>
+                <p style="margin:4px 0 0; font-size:13px; color:#64748b;">
+                  Interactive charts powered by Plotly — click, zoom &amp; hover for details
+                </p>
+              </div>
+              <button
+                onclick="loadAPControlCharts()"
+                style="display:flex; align-items:center; gap:6px; padding:8px 16px;
+                       background:#6366f1; color:#fff; border:none; border-radius:8px;
+                       font-size:13px; font-weight:500; cursor:pointer;
+                       box-shadow:0 1px 3px rgba(99,102,241,0.4);"
+                onmouseover="this.style.background='#4f46e5'"
+                onmouseout="this.style.background='#6366f1'">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2.5">
+                  <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+                  <path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+                  <path d="M8 16H3v5"/>
+                </svg>
+                Refresh Charts
+              </button>
+            </div>
+
+            <!-- ROW 1: Monthly Trend + Risk Donut -->
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+              <div style="background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:16px 12px; box-shadow:0 1px 4px rgba(0,0,0,0.05);">
+                <div id="chart-monthly-trend" style="height:280px;"></div>
+              </div>
+              <div style="background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:16px 12px; box-shadow:0 1px 4px rgba(0,0,0,0.05);">
+                <div id="chart-risk-donut" style="height:280px;"></div>
+              </div>
+            </div>
+
+            <!-- ROW 2: Monthly Amount Stack + Risk Score Histogram -->
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+              <div style="background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:16px 12px; box-shadow:0 1px 4px rgba(0,0,0,0.05);">
+                <div id="chart-monthly-amount" style="height:280px;"></div>
+              </div>
+              <div style="background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:16px 12px; box-shadow:0 1px 4px rgba(0,0,0,0.05);">
+                <div id="chart-risk-histogram" style="height:280px;"></div>
+              </div>
+            </div>
+
+            <!-- ROW 3: Top Vendors (full width) -->
+            <div style="background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:16px 12px; box-shadow:0 1px 4px rgba(0,0,0,0.05); margin-bottom:16px;">
+              <div id="chart-top-vendors" style="height:320px;"></div>
+            </div>
+
+            <!-- ROW 4: Invoice Type + Cost Center -->
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+              <div style="background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:16px 12px; box-shadow:0 1px 4px rgba(0,0,0,0.05);">
+                <div id="chart-invoice-type" style="height:280px;"></div>
+              </div>
+              <div style="background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:16px 12px; box-shadow:0 1px 4px rgba(0,0,0,0.05);">
+                <div id="chart-cost-center" style="height:280px;"></div>
+              </div>
+            </div>
+
+            <!-- ROW 5: Vendor State (full width) -->
+            <div style="background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:16px 12px; box-shadow:0 1px 4px rgba(0,0,0,0.05); margin-bottom:16px;">
+              <div id="chart-vendor-state" style="height:300px;"></div>
+            </div>
+
+          </div>
+          <!-- ── End AP Charts Section ───────────────────────────────── -->
+        </section>
+
+        <!-- RAG AI Query -->
+        <section class="page-section" id="section-rag">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">
+                <div class="card-title-icon">🤖</div>
+                AI Query Engine
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="chat-container">
+                <div id="rag-chat" class="chat-messages"></div>
+                <div class="chat-input-row">
+                  <textarea id="rag-question" class="chat-input"
+                            placeholder="Ask a question about invoices..."
+                            onkeydown="handleRagKeydown(event)"></textarea>
+                  <button class="chat-send-btn" onclick="sendRagQuery()">Send</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- DocFinder -->
+        <section class="page-section" id="section-docfinder">
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <div class="card-title-icon">🗂</div>
+                  Upload Knowledge Docs
+                </div>
+              </div>
+              <div class="card-body">
+                <input type="file" id="doc-file-input" multiple />
+                <div class="mt-12">
+                  <button class="btn btn-primary" onclick="uploadDocs()">Index Documents</button>
+                </div>
+                <div class="mt-16" id="doc-indexed-files"></div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <div class="card-title-icon">🔎</div>
+                  Ask your documents
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="chat-container">
+                  <div id="doc-chat" class="chat-messages"></div>
+                  <div class="chat-input-row">
+                    <textarea id="doc-question" class="chat-input"
+                              placeholder="Ask a question over indexed documents..."
+                              onkeydown="handleDocKeydown(event)"></textarea>
+                    <button class="chat-send-btn" onclick="sendDocQuery()">Send</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Doc Summarizer -->
+        <section class="page-section" id="section-docsummarizer">
+          <div id="tab-docsummarizer" class="ds-tab-root">
+            <!-- Page header -->
+            <div class="ds-page-header">
+              <div class="ds-page-header-left">
+                <h2 class="ds-page-title">Document Summarizer</h2>
+                <p class="ds-page-subtitle">
+                  Upload one or more documents and receive a precise, algorithmic summary —
+                  no AI models, fully rule-based extraction.
+                </p>
+              </div>
+              <div class="ds-page-header-right">
+                <div class="ds-badge">Rule-Based · Extractive · Offline</div>
+              </div>
+            </div>
+
+            <!-- Layout -->
+            <div class="ds-layout">
+              <!-- LEFT Upload -->
+              <div class="ds-card ds-upload-card">
+                <div class="ds-card-header">
+                  <span class="ds-card-icon">⬆</span>
+                  <span class="ds-card-title">Upload Documents</span>
+                </div>
+
+                <div class="ds-dropzone" id="dsDropZone"
+                     ondragover="event.preventDefault(); this.classList.add('ds-dz-active')"
+                     ondragleave="this.classList.remove('ds-dz-active')"
+                     ondrop="dsHandleDrop(event)">
+                  <div class="ds-dz-inner">
+                    <div class="ds-dz-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                           viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                           stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="16 16 12 12 8 16"></polyline>
+                        <line x1="12" y1="12" x2="12" y2="21"></line>
+                        <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path>
+                      </svg>
+                    </div>
+                    <p class="ds-dz-primary">Drag &amp; drop files here</p>
+                    <p class="ds-dz-secondary">or</p>
+                    <label class="ds-browse-btn">
+                      Browse Files
+                      <input type="file" id="dsFileInput" multiple
+                             accept=".pdf,.docx,.pptx,.txt,.md,.csv,.xlsx,.xls"
+                             style="display:none" onchange="dsHandleFileInput(this)">
+                    </label>
+                    <p class="ds-dz-formats">
+                      PDF · DOCX · PPTX · TXT · CSV · XLSX
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Queue -->
+                <div id="dsQueueSection" style="display:none;">
+                  <div class="ds-queue-header">
+                    <span class="ds-queue-title">Queued Files</span>
+                    <button class="ds-link-btn" onclick="dsClearFiles()">Clear all</button>
+                  </div>
+                  <table class="ds-queue-table">
+                    <thead>
+                    <tr>
+                      <th>File name</th>
+                      <th>Type</th>
+                      <th style="width:36px"></th>
+                    </tr>
+                    </thead>
+                    <tbody id="dsQueueBody"></tbody>
+                  </table>
+                </div>
+
+                <!-- Options -->
+                <div class="ds-options-section">
+                  <div class="ds-option-row">
+                    <label class="ds-opt-label" for="dsNumPoints">
+                      Summary depth
+                      <span class="ds-opt-hint">(key sentences to extract, 3–20)</span>
+                    </label>
+                    <div class="ds-opt-control">
+                      <input type="range" id="dsNumPointsSlider" min="3" max="20" value="10"
+                             oninput="document.getElementById('dsNumPoints').value=this.value">
+                      <input type="number" id="dsNumPoints" value="10" min="3" max="20"
+                             oninput="document.getElementById('dsNumPointsSlider').value=this.value">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Run -->
+                <button class="ds-run-btn" id="dsSumBtn" onclick="dsRunSummary()" disabled>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                       viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                       stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                       style="vertical-align:-2px">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
+                  &nbsp;Generate Summary
+                </button>
+
+                <!-- Progress -->
+                <div class="ds-progress-row" id="dsProgress" style="display:none;">
+                  <div class="ds-prog-bar-wrap">
+                    <div class="ds-prog-bar" id="dsProgBar"></div>
+                  </div>
+                  <span class="ds-prog-label" id="dsProgLabel">Analysing documents…</span>
+                </div>
+              </div>
+
+              <!-- RIGHT Results -->
+              <div class="ds-results-col" id="dsResultsCol">
+                <!-- Empty state -->
+                <div class="ds-empty-state" id="dsEmptyState">
+                  <div class="ds-empty-icon">📑</div>
+                  <p class="ds-empty-title">No summary yet</p>
+                  <p class="ds-empty-sub">
+                    Upload documents on the left and click <strong>Generate Summary</strong>.
+                  </p>
+                </div>
+
+                <!-- Error -->
+                <div class="ds-error-banner" id="dsErrorBanner" style="display:none;">
+                  <span class="ds-err-icon">⚠</span>
+                  <span id="dsErrorMsg"></span>
+                </div>
+
+                <!-- Result block -->
+                <div id="dsResultBlock" style="display:none;">
+                  <!-- Metrics -->
+                  <div class="ds-metrics-row" id="dsMetricsRow"></div>
+
+                  <!-- Per-doc -->
+                  <div class="ds-card ds-result-card" id="dsPerDocCard" style="display:none;">
+                    <div class="ds-card-header">
+                      <span class="ds-card-icon">📂</span>
+                      <span class="ds-card-title">Per-Document Highlights</span>
+                    </div>
+                    <div id="dsPerDocBody"></div>
+                  </div>
+
+                  <!-- Combined summary -->
+                  <div class="ds-card ds-result-card">
+                    <div class="ds-card-header">
+                      <span class="ds-card-icon">📝</span>
+                      <span class="ds-card-title">Combined Summary</span>
+                      <button class="ds-copy-btn" onclick="dsCopySummary()" id="dsCopyBtn">
+                        📋 Copy
+                      </button>
+                    </div>
+                    <div class="ds-summary-prose" id="dsSummaryProse"></div>
+                  </div>
+
+                  <!-- Key points -->
+                  <div class="ds-card ds-result-card">
+                    <div class="ds-card-header">
+                      <span class="ds-card-icon">🔑</span>
+                      <span class="ds-card-title">Key Extracted Points</span>
+                      <span class="ds-point-count" id="dsPointCount"></span>
+                    </div>
+                    <ol class="ds-key-list" id="dsKeyList"></ol>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Simulator -->
+        <section class="page-section" id="section-simulator">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">
+                <div class="card-title-icon">🧮</div>
+                What‑If Simulator
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="form-row thirds">
+                <div class="form-field">
+                  <label class="form-label" for="sim-dual-amount">Dual approval above</label>
+                  <input id="sim-dual-amount" class="form-input" type="number" placeholder="50000" />
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="sim-vendor-days">Block new vendor ≤ days</label>
+                  <input id="sim-vendor-days" class="form-input" type="number" placeholder="30" />
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="sim-no-po-amount">Block No‑PO above</label>
+                  <input id="sim-no-po-amount" class="form-input" type="number" placeholder="25000" />
+                </div>
+              </div>
+              <button class="btn btn-primary" onclick="runSimulator()">Run Simulation</button>
+              <div id="sim-result" class="mt-20"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Playbook -->
+        <section class="page-section" id="section-playbook">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">
+                <div class="card-title-icon">📌</div>
+                Fraud Playbook
+              </div>
+            </div>
+            <div class="card-body" id="playbook-content">
+              <div class="empty-state">
+                <div class="empty-state-icon">📘</div>
+                <div class="empty-state-title">No recommendations loaded</div>
+                <div class="empty-state-sub">
+                  Run invoice analysis first to generate a tailored fraud playbook.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- Invoice modal -->
+  <div class="modal-backdrop" id="invoice-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title">Invoice Details</div>
+        <button class="modal-close" onclick="closeInvoiceModal()">×</button>
+      </div>
+      <div class="modal-body" id="invoice-modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Main dashboard JS -->
+  <script src="/static/js/main.js"></script>
+
+  <!-- Plotly for AP Control Charts -->
+  <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+  <!-- AP Control Plotly Charts -->
+  <script src="/static/js/ap_control_charts.js"></script>
+
+  <!-- Doc Summarizer JS -->
+  <script>
+  (function () {
+    'use strict';
+
+    /* ---------- tab activation (unused in sidebar layout, safe to keep) ---------- */
+    window.dsActivateTab = function (e) {
+      if (e) e.preventDefault();
+      document.querySelectorAll('.tab-panel').forEach(p => p.style.display = 'none');
+      document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('active'));
+      const panel = document.getElementById('tab-docsummarizer');
+      if (panel) panel.style.display = 'block';
+      const btn = document.getElementById('tab-btn-docsummarizer');
+      if (btn) btn.classList.add('active');
+    };
+
+    /* ---------- state ---------- */
+    const _files = new Map();  // filename → File
+
+    /* ---------- helpers ---------- */
+    function _esc(s) {
+      return String(s || '')
+        .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+        .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+    function _num(n) { return Number(n || 0).toLocaleString(); }
+
+    function _syncBtn() {
+      const btn = document.getElementById('dsSumBtn');
+      if (btn) btn.disabled = (_files.size === 0);
+    }
+    function _showProgress() {
+      const p = document.getElementById('dsProgress');
+      const btn = document.getElementById('dsSumBtn');
+      if (p) p.style.display = 'flex';
+      if (btn) btn.disabled = true;
+    }
+    function _hideProgress() {
+      const p = document.getElementById('dsProgress');
+      if (p) p.style.display = 'none';
+      _syncBtn();
+    }
+    function _showError(msg) {
+      const b = document.getElementById('dsErrorBanner');
+      const span = document.getElementById('dsErrorMsg');
+      if (!b || !span) return;
+      span.textContent = msg;
+      b.style.display = 'flex';
+    }
+    function _resetResults() {
+      const block = document.getElementById('dsResultBlock');
+      const err = document.getElementById('dsErrorBanner');
+      const empty = document.getElementById('dsEmptyState');
+      if (block) block.style.display = 'none';
+      if (err) err.style.display = 'none';
+      if (empty) empty.style.display = 'flex';
+    }
+
+    /* ---------- file input ---------- */
+    function _addFiles(list) {
+      Array.from(list || []).forEach(f => {
+        if (!_files.has(f.name)) _files.set(f.name, f);
+      });
+      _renderQueue();
+      _syncBtn();
+      _resetResults();
+    }
+
+    function _renderQueue() {
+      const tbody = document.getElementById('dsQueueBody');
+      const section = document.getElementById('dsQueueSection');
+      if (!tbody || !section) return;
+      tbody.innerHTML = '';
+      if (_files.size === 0) {
+        section.style.display = 'none';
+        return;
+      }
+      section.style.display = 'block';
+      _files.forEach((file, name) => {
+        const ext = name.includes('.') ? name.split('.').pop().toUpperCase() : '?';
+        const tr = document.createElement('tr');
+        tr.innerHTML =
+          '<td style="max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="' + _esc(name) + '">' +
+            _esc(name) +
+          '</td>' +
+          '<td><span class="ds-ext-tag">' + _esc(ext) + '</span></td>' +
+          '<td><button class="ds-rm-btn" onclick="dsRemoveFile(\'' + _esc(name) + '\')">✕</button></td>';
+        tbody.appendChild(tr);
+      });
+    }
+
+    window.dsHandleFileInput = function (input) {
+      if (!input || !input.files) return;
+      _addFiles(input.files);
+      input.value = '';
+    };
+
+    window.dsHandleDrop = function (e) {
+      e.preventDefault();
+      const dz = document.getElementById('dsDropZone');
+      if (dz) dz.classList.remove('ds-dz-active');
+      if (!e.dataTransfer || !e.dataTransfer.files) return;
+      _addFiles(e.dataTransfer.files);
+    };
+
+    window.dsRemoveFile = function (name) {
+      _files.delete(name);
+      _renderQueue();
+      _syncBtn();
+    };
+
+    window.dsClearFiles = function () {
+      _files.clear();
+      _renderQueue();
+      _syncBtn();
+      _resetResults();
+    };
+
+    /* ---------- run summary ---------- */
+    window.dsRunSummary = async function () {
+      if (_files.size === 0) return;
+      _resetResults();
+      _showProgress();
+
+      const fd = new FormData();
+      _files.forEach(f => fd.append('files', f));
+      const npRaw = parseInt(document.getElementById('dsNumPoints').value, 10) || 10;
+      const np = Math.max(3, Math.min(npRaw, 20));
+      fd.append('num_points', String(np));
+
+      try {
+        const resp = await fetch('/api/summarize_docs', {
+          method: 'POST',
+          body: fd
+        });
+        const data = await resp.json();
+        if (!resp.ok) {
+          _showError(data.error || 'Server returned an error.');
+          return;
+        }
+        _render(data);
+      } catch (err) {
+        _showError('Network error: ' + (err && err.message ? err.message : 'Unknown error'));
+      } finally {
+        _hideProgress();
+      }
+    };
+
+    function _render(data) {
+      const s = data.stats || {};
+
+      // metrics
+      const row = document.getElementById('dsMetricsRow');
+      if (row) {
+        row.innerHTML = [
+          { label: 'Documents',          value: s.total_documents || 0,                 sub: 'uploaded' },
+          { label: 'Words Analysed',     value: _num(s.total_words),                    sub: 'across all files' },
+          { label: 'Sentences Scanned',  value: _num(s.total_sentences_analysed || 0),  sub: 'total corpus' },
+          { label: 'Key Points',         value: s.sentences_in_summary || 0,            sub: 'extracted' }
+        ].map(m =>
+          '<div class="ds-metric-card">' +
+            '<div class="ds-metric-label">' + _esc(m.label) + '</div>' +
+            '<div class="ds-metric-value">' + _esc(m.value) + '</div>' +
+            '<div class="ds-metric-sub">' + _esc(m.sub) + '</div>' +
+          '</div>'
+        ).join('');
+      }
+
+      // per-document
+      const perDoc = data.per_doc || [];
+      const pdCard = document.getElementById('dsPerDocCard');
+      const pdBody = document.getElementById('dsPerDocBody');
+      if (pdCard && pdBody) {
+        if (perDoc.length > 1) {
+          let rows = '';
+          perDoc.forEach(doc => {
+            const pts = (doc.key_points || []).map(p => '<li>' + _esc(p) + '</li>').join('');
+            rows +=
+              '<tr>' +
+                '<td><strong style="color:#b0c8e0">' + _esc(doc.filename) + '</strong>' +
+                '<br><span style="color:#3a5570;font-size:11px">' + _num(doc.word_count) + ' words</span></td>' +
+                '<td>' +
+                  (pts ? '<ul class="ds-perdoc-pts">' + pts + '</ul>'
+                       : '<span style="color:#3a5570">No text extracted</span>') +
+                '</td>' +
+              '</tr>';
+          });
+          pdBody.innerHTML =
+            '<table class="ds-perdoc-table">' +
+              '<thead><tr><th>Document</th><th>Key highlights</th></tr></thead>' +
+              '<tbody>' + rows + '</tbody>' +
+            '</table>';
+          pdCard.style.display = 'block';
+        } else {
+          pdCard.style.display = 'none';
+        }
+      }
+
+      // combined summary
+      const prose = document.getElementById('dsSummaryProse');
+      if (prose) prose.textContent = data.summary || '';
+
+      // key list
+      const ol = document.getElementById('dsKeyList');
+      if (ol) {
+        ol.innerHTML = '';
+        (data.bullet_points || []).forEach((pt, i) => {
+          const li = document.createElement('li');
+          li.innerHTML = '<span class="ds-key-num">' + (i + 1) + '</span><span>' + _esc(pt) + '</span>';
+          ol.appendChild(li);
+        });
+      }
+      const pc = document.getElementById('dsPointCount');
+      if (pc) {
+        pc.textContent = (data.bullet_points || []).length + ' points';
+      }
+
+      // errors / rejected
+      const errs =
+        (data.errors || []).map(e => (e.filename || 'File') + ': ' + (e.error || 'error'))
+        .concat((data.rejected_files || []).map(f => (typeof f === 'string' ? f : (f && f.filename) || 'Unknown file') + ' — unsupported format'));
+      if (errs.length) _showError(errs.join(' · '));
+
+      // show results
+      const empty = document.getElementById('dsEmptyState');
+      const block = document.getElementById('dsResultBlock');
+      if (empty) empty.style.display = 'none';
+      if (block) block.style.display = 'block';
+    }
+
+    /* ---------- copy summary ---------- */
+    window.dsCopySummary = function () {
+      const proseEl = document.getElementById('dsSummaryProse');
+      const listItems = document.querySelectorAll('#dsKeyList li span:last-child');
+      if (!proseEl) return;
+
+      const prose = proseEl.textContent || '';
+      const bullets = Array.from(listItems).map((s, i) => (i + 1) + '. ' + (s.textContent || ''));
+      const text = prose + (bullets.length ? '\n\nKey Points:\n' + bullets.join('\n') : '');
+
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('dsCopyBtn');
+        if (!btn) return;
+        const prev = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = prev; }, 2200);
+      }).catch(() => {
+        alert('Copy failed — please select and copy manually.');
+      });
+    };
+  })();
+  </script>
+</body>
+</html>

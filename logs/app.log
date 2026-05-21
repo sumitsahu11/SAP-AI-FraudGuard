@@ -1,0 +1,722 @@
+2026-04-01 12:38:45,412 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-01 12:39:15,798 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-01 12:42:00,943 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-01 12:42:31,734 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-01 12:43:03,723 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-01 12:45:43,898 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-01 12:46:02,293 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-01 12:51:17,757 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-01 12:51:52,245 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-01 13:57:44,662 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-01 13:59:09,617 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-01 14:01:58,897 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-01 14:02:23,091 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-01 14:09:18,019 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-01 14:09:39,437 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-01 14:10:09,221 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.xlsx
+2026-04-01 14:10:09,237 - fraudguard - ERROR - Error while processing invoices
+Traceback (most recent call last):
+  File "C:\Users\sumit.sahu\sap_ai_fraudguard_backend\venv\Lib\site-packages\pandas\compat\_optional.py", line 158, in import_optional_dependency
+    module = importlib.import_module(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sumit.sahu\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1206, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1142, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'openpyxl'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\sumit.sahu\sap_ai_fraudguard_backend\app.py", line 72, in process_invoices
+    df = load_invoices(save_path)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sumit.sahu\sap_ai_fraudguard_backend\src\data_loader.py", line 34, in load_invoices
+    df = pd.read_excel(file_path)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sumit.sahu\sap_ai_fraudguard_backend\venv\Lib\site-packages\pandas\io\excel\_base.py", line 481, in read_excel
+    io = ExcelFile(
+         ^^^^^^^^^^
+  File "C:\Users\sumit.sahu\sap_ai_fraudguard_backend\venv\Lib\site-packages\pandas\io\excel\_base.py", line 1621, in __init__
+    self._reader = self._engines[engine](
+                   ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sumit.sahu\sap_ai_fraudguard_backend\venv\Lib\site-packages\pandas\io\excel\_openpyxl.py", line 559, in __init__
+    import_optional_dependency("openpyxl")
+  File "C:\Users\sumit.sahu\sap_ai_fraudguard_backend\venv\Lib\site-packages\pandas\compat\_optional.py", line 161, in import_optional_dependency
+    raise ImportError(msg) from err
+ImportError: `Import openpyxl` failed.  Use pip or conda to install the openpyxl package.
+2026-04-01 14:14:30,348 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-01 14:14:47,082 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-01 14:14:47,459 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.xlsx
+2026-04-01 14:14:48,292 - fraudguard - INFO - Applying rule-based checks
+2026-04-01 14:14:48,310 - fraudguard - ERROR - Error while processing invoices
+Traceback (most recent call last):
+  File "C:\Users\sumit.sahu\sap_ai_fraudguard_backend\app.py", line 73, in process_invoices
+    df = apply_rule_checks(df)
+         ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sumit.sahu\sap_ai_fraudguard_backend\src\rules_engine.py", line 41, in apply_rule_checks
+    vendor_stats = df.groupby("Vendor")["Amount"].agg(["median"])
+                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sumit.sahu\sap_ai_fraudguard_backend\venv\Lib\site-packages\pandas\util\_decorators.py", line 336, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sumit.sahu\sap_ai_fraudguard_backend\venv\Lib\site-packages\pandas\core\frame.py", line 10821, in groupby
+    return DataFrameGroupBy(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\sumit.sahu\sap_ai_fraudguard_backend\venv\Lib\site-packages\pandas\core\groupby\groupby.py", line 1095, in __init__
+    grouper, exclusions, obj = get_grouper(
+                               ^^^^^^^^^^^^
+  File "C:\Users\sumit.sahu\sap_ai_fraudguard_backend\venv\Lib\site-packages\pandas\core\groupby\grouper.py", line 896, in get_grouper
+    raise ValueError(f"Grouper for '{name}' not 1-dimensional")
+ValueError: Grouper for 'Vendor' not 1-dimensional
+2026-04-01 14:16:19,577 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-01 14:16:37,232 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-01 14:16:37,840 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.xlsx
+2026-04-01 14:16:38,650 - fraudguard - INFO - Applying rule-based checks
+2026-04-01 14:16:38,682 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-01 14:16:38,887 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-01 14:16:38,920 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-01 14:16:44,113 - fraudguard - INFO - Building RAG index for invoices
+2026-04-01 14:16:59,058 - fraudguard - INFO - RAG index built for 1000 invoices
+2026-04-01 14:23:24,683 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-01 14:23:43,770 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-01 14:26:58,125 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-01 14:29:40,035 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-01 14:30:06,213 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-01 14:30:43,088 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.xlsx
+2026-04-01 14:30:44,737 - fraudguard - INFO - Applying rule-based checks
+2026-04-01 14:30:44,773 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-01 14:30:45,086 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-01 14:30:45,141 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-01 14:30:51,650 - fraudguard - INFO - Building RAG index for invoices
+2026-04-01 14:31:11,937 - fraudguard - INFO - RAG index built for 1000 invoices
+2026-04-01 14:41:27,042 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-01 15:58:17,307 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-01 15:58:48,565 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-01 15:59:01,243 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.xlsx
+2026-04-01 15:59:03,217 - fraudguard - INFO - Applying rule-based checks
+2026-04-01 15:59:03,286 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-01 15:59:03,903 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-01 15:59:03,990 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-01 15:59:11,471 - fraudguard - INFO - Building RAG index for invoices
+2026-04-01 15:59:32,162 - fraudguard - INFO - RAG index built for 1000 invoices
+2026-04-01 16:21:10,262 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-01 16:21:40,275 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-01 16:22:05,964 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.xlsx
+2026-04-01 16:22:08,033 - fraudguard - INFO - Applying rule-based checks
+2026-04-01 16:22:08,116 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-01 16:22:08,810 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-01 16:22:08,901 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-01 16:22:14,693 - fraudguard - INFO - Building RAG index for invoices
+2026-04-01 16:22:34,436 - fraudguard - INFO - RAG index built for 1000 invoices
+2026-04-01 16:23:23,249 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.xlsx
+2026-04-01 16:23:24,083 - fraudguard - INFO - Applying rule-based checks
+2026-04-01 16:23:24,132 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-01 16:23:24,605 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-01 16:23:24,687 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-02 12:27:12,061 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-02 12:27:56,933 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-02 12:28:11,234 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.xlsx
+2026-04-02 12:28:14,190 - fraudguard - INFO - Applying rule-based checks
+2026-04-02 12:28:14,267 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-02 12:28:14,999 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-02 12:28:15,079 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-02 12:28:21,527 - fraudguard - INFO - Building RAG index for invoices
+2026-04-02 12:28:35,091 - fraudguard - INFO - RAG index built for 1000 invoices
+2026-04-02 12:35:22,814 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-02 12:36:21,842 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 14:36:06,622 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 14:36:38,728 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 14:36:53,886 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.xlsx
+2026-04-03 14:36:55,858 - fraudguard - INFO - Applying rule-based checks
+2026-04-03 14:36:55,929 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-03 14:36:56,543 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-03 14:36:56,610 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-03 14:37:02,334 - fraudguard - INFO - Building RAG index for invoices
+2026-04-03 14:37:17,896 - fraudguard - INFO - RAG index built for 1000 invoices
+2026-04-03 15:38:42,535 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 15:39:01,231 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 15:45:28,107 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 15:46:00,834 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 15:46:25,556 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 15:46:56,124 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.csv
+2026-04-03 15:46:56,167 - fraudguard - INFO - Applying rule-based checks
+2026-04-03 15:46:56,246 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-03 15:46:56,642 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-03 15:46:56,697 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-03 15:47:02,144 - fraudguard - INFO - Building RAG index for invoices
+2026-04-03 15:47:16,590 - fraudguard - INFO - RAG index built for 1000 invoices
+2026-04-03 15:48:13,098 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 15:48:28,488 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 15:48:45,832 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.csv
+2026-04-03 15:48:45,898 - fraudguard - INFO - Applying rule-based checks
+2026-04-03 15:48:45,952 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-03 15:48:46,309 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-03 15:48:46,370 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-03 15:48:51,286 - fraudguard - INFO - Building RAG index for invoices
+2026-04-03 15:49:05,321 - fraudguard - INFO - RAG index built for 1000 invoices
+2026-04-03 15:59:52,014 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 16:00:21,658 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 16:02:49,898 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 16:03:25,191 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 16:54:45,446 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 16:55:27,094 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 16:58:57,863 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 16:59:40,105 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 17:01:45,558 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 17:02:28,615 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 17:16:00,877 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 17:16:46,005 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 17:25:48,875 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 17:28:32,492 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 17:29:11,649 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 17:29:25,152 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.csv
+2026-04-03 17:29:25,234 - fraudguard - INFO - Applying rule-based checks
+2026-04-03 17:29:25,312 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-03 17:29:25,824 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-03 17:29:25,907 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-03 17:29:34,638 - fraudguard - INFO - Building RAG index for invoices
+2026-04-03 17:29:47,554 - fraudguard - INFO - RAG index built for 1000 invoices
+2026-04-03 17:40:23,649 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 17:41:10,473 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 17:41:24,466 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.csv
+2026-04-03 17:41:24,585 - fraudguard - INFO - Applying rule-based checks
+2026-04-03 17:41:24,683 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-03 17:41:25,188 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-03 17:41:25,252 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-03 17:41:30,535 - fraudguard - INFO - Building RAG index for invoices
+2026-04-03 17:41:50,122 - fraudguard - INFO - RAG index built for 1000 invoices
+2026-04-03 17:46:57,080 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 17:47:34,396 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 17:47:51,238 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.csv
+2026-04-03 17:47:51,329 - fraudguard - INFO - Applying rule-based checks
+2026-04-03 17:47:51,406 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-03 17:47:52,034 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-03 17:47:52,112 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-03 17:47:57,529 - fraudguard - INFO - Building RAG index for invoices
+2026-04-03 17:48:17,686 - fraudguard - INFO - RAG index built for 1000 invoices
+2026-04-03 17:55:01,169 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 17:55:51,872 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 17:59:12,294 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 18:00:03,763 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 18:06:08,192 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 18:07:02,337 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 18:11:11,741 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 18:11:59,400 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 18:12:24,934 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.csv
+2026-04-03 18:12:25,224 - fraudguard - INFO - Applying rule-based checks
+2026-04-03 18:12:25,347 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-03 18:12:26,549 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-03 18:12:26,647 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-03 18:12:32,092 - fraudguard - INFO - Building RAG index for invoices
+2026-04-03 18:12:45,688 - fraudguard - INFO - RAG index built for 1000 invoices
+2026-04-03 18:21:48,885 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 18:22:54,887 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 18:23:10,248 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.csv
+2026-04-03 18:23:10,408 - fraudguard - INFO - Applying rule-based checks
+2026-04-03 18:23:10,547 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-03 18:23:11,536 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-03 18:23:11,609 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-03 18:23:21,617 - fraudguard - INFO - Building RAG index for invoices
+2026-04-03 18:23:36,974 - fraudguard - INFO - RAG index built for 1000 invoices
+2026-04-03 19:26:20,791 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 19:26:58,535 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 19:27:24,531 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.csv
+2026-04-03 19:27:24,663 - fraudguard - INFO - Applying rule-based checks
+2026-04-03 19:27:24,764 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-03 19:27:25,341 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-03 19:27:25,405 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-03 19:27:31,219 - fraudguard - INFO - Building RAG index for invoices
+2026-04-03 19:27:51,658 - fraudguard - INFO - RAG index built for 1000 invoices
+2026-04-03 19:34:16,853 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 19:34:49,169 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 19:35:11,863 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.csv
+2026-04-03 19:35:11,951 - fraudguard - INFO - Applying rule-based checks
+2026-04-03 19:35:12,025 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-03 19:35:12,871 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-03 19:35:12,914 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-03 19:35:18,577 - fraudguard - INFO - Building RAG index for invoices
+2026-04-03 19:35:32,097 - fraudguard - INFO - RAG index built for 1000 invoices
+2026-04-03 19:41:21,165 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 19:42:55,927 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 19:43:15,252 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 19:43:36,903 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.csv
+2026-04-03 19:43:37,051 - fraudguard - INFO - Applying rule-based checks
+2026-04-03 19:43:37,159 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-03 19:43:37,458 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-03 19:43:37,516 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-03 19:43:42,792 - fraudguard - INFO - Building RAG index for invoices
+2026-04-03 19:43:56,989 - fraudguard - INFO - RAG index built for 1000 invoices
+2026-04-03 19:48:14,812 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 19:48:45,098 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 19:48:54,631 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.csv
+2026-04-03 19:48:54,746 - fraudguard - INFO - Applying rule-based checks
+2026-04-03 19:48:54,844 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-03 19:48:55,423 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-03 19:48:55,487 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-03 19:49:00,109 - fraudguard - INFO - Building RAG index for invoices
+2026-04-03 19:49:14,434 - fraudguard - INFO - RAG index built for 1000 invoices
+2026-04-03 19:54:47,213 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.csv
+2026-04-03 19:54:47,288 - fraudguard - INFO - Applying rule-based checks
+2026-04-03 19:54:47,350 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-03 19:54:48,209 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-03 19:54:48,288 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-03 19:54:53,583 - fraudguard - INFO - Building RAG index for invoices
+2026-04-03 19:55:12,968 - fraudguard - INFO - RAG index built for 1000 invoices
+2026-04-03 21:48:06,418 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 21:48:25,762 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 22:49:26,520 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 22:49:43,105 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 23:02:07,153 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 23:02:19,060 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 23:03:42,204 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.xlsx
+2026-04-03 23:03:46,311 - fraudguard - INFO - Applying rule-based checks
+2026-04-03 23:03:46,434 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-03 23:03:47,180 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-03 23:03:47,280 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-03 23:03:54,058 - fraudguard - INFO - Building RAG index for invoices
+2026-04-03 23:04:18,653 - fraudguard - INFO - RAG index built for 1000 invoices
+2026-04-03 23:18:11,919 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 23:18:49,459 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 23:22:50,514 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 23:23:11,825 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 23:29:52,524 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 23:30:22,668 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 23:31:14,043 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 23:31:43,547 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 23:34:47,635 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 23:35:14,085 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 23:45:42,029 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 23:46:11,548 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 23:46:28,230 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-03 23:46:56,151 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.csv
+2026-04-03 23:46:56,260 - fraudguard - INFO - Applying rule-based checks
+2026-04-03 23:46:56,359 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-03 23:46:57,382 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-03 23:46:57,487 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-03 23:47:04,400 - fraudguard - INFO - Building RAG index for invoices
+2026-04-03 23:47:35,995 - fraudguard - INFO - RAG index built for 1000 invoices
+2026-04-04 00:15:41,660 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-04 00:37:47,579 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-04 00:38:32,412 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-04 00:38:55,016 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.csv
+2026-04-04 00:38:55,102 - fraudguard - INFO - Applying rule-based checks
+2026-04-04 00:38:55,253 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-04 00:38:56,345 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-04 00:38:56,447 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-04 00:39:01,778 - fraudguard - INFO - Building RAG index for invoices
+2026-04-04 00:39:27,122 - fraudguard - INFO - RAG index built for 1000 invoices
+2026-04-04 00:53:59,434 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-04 00:55:59,911 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-04 00:56:41,243 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-04 00:57:19,975 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-04 01:03:27,076 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-04 01:04:32,785 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-04 01:05:42,477 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-04 01:07:24,003 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-04 01:08:02,950 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-04 01:11:44,845 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-04 01:12:25,062 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 12:37:07,972 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 12:37:38,377 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 12:37:54,463 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.csv
+2026-04-06 12:37:54,517 - fraudguard - INFO - Applying rule-based checks
+2026-04-06 12:37:54,606 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-06 12:37:55,383 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-06 12:37:55,485 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-06 12:38:01,004 - fraudguard - INFO - Building RAG index for invoices
+2026-04-06 12:38:26,039 - fraudguard - INFO - RAG index built for 1000 invoices
+2026-04-06 14:21:58,404 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 14:22:37,315 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 14:23:31,797 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 14:45:22,208 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 14:45:56,944 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 14:46:21,134 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sap_invoices_2000_demo.xlsx
+2026-04-06 14:46:27,236 - fraudguard - INFO - Applying rule-based checks
+2026-04-06 14:46:27,401 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-06 14:46:28,398 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-06 14:46:28,541 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-06 14:46:34,158 - fraudguard - INFO - Building RAG index for invoices
+2026-04-06 14:46:59,755 - fraudguard - INFO - RAG index built for 2000 invoices
+2026-04-06 14:51:52,284 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 14:59:02,808 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 14:59:36,357 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 14:59:51,009 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sap_invoices_2000_demo.xlsx
+2026-04-06 14:59:55,047 - fraudguard - INFO - Applying rule-based checks
+2026-04-06 14:59:55,198 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-06 14:59:56,136 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-06 14:59:56,298 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-06 15:00:01,061 - fraudguard - INFO - Building RAG index for invoices
+2026-04-06 15:00:40,885 - fraudguard - INFO - RAG index built for 2000 invoices
+2026-04-06 16:31:19,593 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 16:40:25,871 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 16:41:00,851 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 16:42:13,647 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sap_invoices_2000_demo.xlsx
+2026-04-06 16:42:16,506 - fraudguard - INFO - Applying rule-based checks
+2026-04-06 16:42:16,608 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-06 16:42:17,003 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-06 16:42:17,105 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-06 16:42:21,556 - fraudguard - INFO - Building RAG index for invoices
+2026-04-06 16:43:20,595 - fraudguard - INFO - RAG index built for 2000 invoices
+2026-04-06 16:44:58,220 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 16:45:26,367 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 16:45:50,660 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sap_invoices_2000_demo.xlsx
+2026-04-06 16:45:54,476 - fraudguard - INFO - Applying rule-based checks
+2026-04-06 16:45:54,663 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-06 16:45:55,628 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-06 16:45:55,775 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-06 16:46:01,648 - fraudguard - INFO - Building RAG index for invoices
+2026-04-06 16:47:12,708 - fraudguard - INFO - RAG index built for 2000 invoices
+2026-04-06 17:53:07,159 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 17:57:13,878 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 17:58:08,184 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 18:08:24,713 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 18:20:27,505 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 18:21:19,388 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 18:21:35,891 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sap_invoices_2000_demo.xlsx
+2026-04-06 18:21:40,944 - fraudguard - INFO - Applying rule-based checks
+2026-04-06 18:21:41,130 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-06 18:21:42,304 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-06 18:21:42,504 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-06 18:21:48,483 - fraudguard - INFO - Building RAG index for invoices
+2026-04-06 18:22:51,339 - fraudguard - INFO - RAG index built for 2000 invoices
+2026-04-06 19:30:40,166 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 19:31:20,833 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 19:34:57,210 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 19:35:30,332 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 19:41:29,938 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 19:42:15,450 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 19:43:02,019 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sap_invoices_2000_demo.xlsx
+2026-04-06 19:43:04,011 - fraudguard - INFO - Applying rule-based checks
+2026-04-06 19:43:04,130 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-06 19:43:04,544 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-06 19:43:04,658 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-06 19:43:09,128 - fraudguard - INFO - Building RAG index for invoices
+2026-04-06 19:43:46,799 - fraudguard - INFO - RAG index built for 2000 invoices
+2026-04-06 19:52:48,702 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 19:53:20,165 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 19:53:29,698 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sap_invoices_2000_demo.xlsx
+2026-04-06 19:53:31,850 - fraudguard - INFO - Applying rule-based checks
+2026-04-06 19:53:31,928 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-06 19:53:32,315 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-06 19:53:32,388 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-06 19:53:37,360 - fraudguard - INFO - Building RAG index for invoices
+2026-04-06 19:54:06,318 - fraudguard - INFO - RAG index built for 2000 invoices
+2026-04-06 20:12:27,634 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 20:12:57,811 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 20:13:06,642 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sap_invoices_2000_demo.xlsx
+2026-04-06 20:13:08,468 - fraudguard - INFO - Applying rule-based checks
+2026-04-06 20:13:08,570 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-06 20:13:09,042 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-06 20:13:09,194 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-06 20:13:15,684 - fraudguard - INFO - Building RAG index for invoices
+2026-04-06 20:13:39,331 - fraudguard - INFO - RAG index built for 2000 invoices
+2026-04-06 20:17:05,863 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 20:17:43,161 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 20:17:55,903 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sap_invoices_2000_demo.csv
+2026-04-06 20:17:55,969 - fraudguard - INFO - Applying rule-based checks
+2026-04-06 20:17:56,052 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-06 20:17:56,436 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-06 20:17:56,573 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-06 20:18:00,879 - fraudguard - INFO - Building RAG index for invoices
+2026-04-06 20:18:34,376 - fraudguard - INFO - RAG index built for 2000 invoices
+2026-04-06 22:10:58,826 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 22:11:51,106 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-06 22:13:27,694 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sap_invoices_2000_demo.xlsx
+2026-04-06 22:13:30,697 - fraudguard - INFO - Applying rule-based checks
+2026-04-06 22:13:30,847 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-06 22:13:31,506 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-06 22:13:31,647 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-06 22:13:37,192 - fraudguard - INFO - Building RAG index for invoices
+2026-04-06 22:14:11,199 - fraudguard - INFO - RAG index built for 2000 invoices
+2026-04-06 22:16:02,930 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.csv
+2026-04-06 22:16:02,976 - fraudguard - INFO - Applying rule-based checks
+2026-04-06 22:16:03,042 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-06 22:16:03,511 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-06 22:16:03,596 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-06 22:16:09,049 - fraudguard - INFO - Building RAG index for invoices
+2026-04-06 22:16:28,861 - fraudguard - INFO - RAG index built for 1000 invoices
+2026-04-07 08:26:03,471 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-07 08:26:35,155 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-07 08:43:52,244 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-07 08:44:18,383 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-07 08:44:34,689 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sap_invoices_2000_demo.xlsx
+2026-04-07 08:44:38,844 - fraudguard - INFO - Applying rule-based checks
+2026-04-07 08:44:38,988 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-07 08:44:39,600 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-07 08:44:39,766 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-07 08:44:44,645 - fraudguard - INFO - Building RAG index for invoices
+2026-04-07 08:45:12,392 - fraudguard - INFO - RAG index built for 2000 invoices
+2026-04-07 10:05:33,686 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-07 10:06:01,851 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-07 10:28:21,237 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-07 10:29:04,225 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-07 10:40:49,517 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-07 10:41:26,872 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-07 10:44:35,634 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-07 10:45:15,352 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-07 10:46:16,353 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sap_invoices_2000_demo.csv
+2026-04-07 10:46:16,495 - fraudguard - INFO - Applying rule-based checks
+2026-04-07 10:46:16,646 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-07 10:46:17,406 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-07 10:46:17,567 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-07 10:46:23,456 - fraudguard - INFO - Building RAG index for invoices
+2026-04-07 10:46:59,167 - fraudguard - INFO - RAG index built for 2000 invoices
+2026-04-07 11:34:17,242 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-07 11:35:07,622 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-07 11:36:31,079 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sap_invoices_2000_demo.xlsx
+2026-04-07 11:36:35,709 - fraudguard - INFO - Applying rule-based checks
+2026-04-07 11:36:35,845 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-07 11:36:36,676 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-07 11:36:36,857 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-07 11:36:42,266 - fraudguard - INFO - Building RAG index for invoices
+2026-04-07 11:37:27,193 - fraudguard - INFO - RAG index built for 2000 invoices
+2026-04-07 12:46:05,938 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-07 12:46:49,013 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-07 12:47:18,413 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sap_invoices_2000_demo.xlsx
+2026-04-07 12:47:20,929 - fraudguard - INFO - Applying rule-based checks
+2026-04-07 12:47:21,068 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-07 12:47:21,757 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-07 12:47:21,914 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-07 12:47:30,741 - fraudguard - INFO - Building RAG index for invoices
+2026-04-07 12:48:03,777 - fraudguard - INFO - RAG index built for 2000 invoices
+2026-04-07 13:03:33,268 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-07 13:04:10,536 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-07 14:09:51,496 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-07 14:10:16,372 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-07 14:12:20,048 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-07 14:12:44,370 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-07 14:13:22,959 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sap_invoices_2000_demo.xlsx
+2026-04-07 14:13:25,844 - fraudguard - INFO - Applying rule-based checks
+2026-04-07 14:13:25,977 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-07 14:13:26,770 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-07 14:13:26,906 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-07 14:13:31,664 - fraudguard - INFO - Building RAG index for invoices
+2026-04-07 14:14:33,870 - fraudguard - INFO - RAG index built for 2000 invoices
+2026-04-07 14:19:30,517 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-07 14:19:58,712 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-07 14:21:42,763 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.csv
+2026-04-07 14:21:42,849 - fraudguard - INFO - Applying rule-based checks
+2026-04-07 14:21:42,913 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-07 14:21:43,543 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-07 14:21:43,607 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-07 14:21:48,160 - fraudguard - INFO - Building RAG index for invoices
+2026-04-07 14:22:14,856 - fraudguard - INFO - RAG index built for 1000 invoices
+2026-04-07 16:06:04,298 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-07 16:06:36,312 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-07 16:06:52,391 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sap_invoices_2000_demo.xlsx
+2026-04-07 16:06:56,410 - fraudguard - INFO - Applying rule-based checks
+2026-04-07 16:06:56,508 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-07 16:06:57,135 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-07 16:06:57,231 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-07 16:07:02,484 - fraudguard - INFO - Building RAG index for invoices
+2026-04-07 16:07:58,317 - fraudguard - INFO - RAG index built for 2000 invoices
+2026-04-09 12:11:58,266 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-09 19:19:34,583 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-09 19:20:04,338 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-09 19:20:34,694 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-09 19:21:00,813 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sap_invoices_2000_demo.xlsx
+2026-04-09 19:21:07,138 - fraudguard - INFO - Applying rule-based checks
+2026-04-09 19:21:07,345 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-09 19:21:08,261 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-09 19:21:08,394 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-09 19:21:14,240 - fraudguard - INFO - Building RAG index for invoices
+2026-04-09 19:22:06,631 - fraudguard - INFO - RAG index built for 2000 invoices
+2026-04-15 12:21:03,846 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-15 12:21:42,904 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-15 12:34:08,626 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-15 12:34:46,861 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-15 12:56:11,342 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-15 12:57:03,920 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-15 13:09:01,784 - fraudguard - ERROR - Error during document summarisation
+Traceback (most recent call last):
+  File "C:\Users\sumit.sahu\sap_ai_fraudguard_backend\app.py", line 589, in summarize_docs
+    result = summarise_documents(file_pairs, target_sentences=num_points)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: summarise_documents() got an unexpected keyword argument 'target_sentences'
+2026-04-15 13:09:15,954 - fraudguard - ERROR - Error during document summarisation
+Traceback (most recent call last):
+  File "C:\Users\sumit.sahu\sap_ai_fraudguard_backend\app.py", line 589, in summarize_docs
+    result = summarise_documents(file_pairs, target_sentences=num_points)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: summarise_documents() got an unexpected keyword argument 'target_sentences'
+2026-04-15 13:09:18,669 - fraudguard - ERROR - Error during document summarisation
+Traceback (most recent call last):
+  File "C:\Users\sumit.sahu\sap_ai_fraudguard_backend\app.py", line 589, in summarize_docs
+    result = summarise_documents(file_pairs, target_sentences=num_points)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: summarise_documents() got an unexpected keyword argument 'target_sentences'
+2026-04-15 13:09:19,401 - fraudguard - ERROR - Error during document summarisation
+Traceback (most recent call last):
+  File "C:\Users\sumit.sahu\sap_ai_fraudguard_backend\app.py", line 589, in summarize_docs
+    result = summarise_documents(file_pairs, target_sentences=num_points)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: summarise_documents() got an unexpected keyword argument 'target_sentences'
+2026-04-15 13:10:38,921 - fraudguard - ERROR - Error during document summarisation
+Traceback (most recent call last):
+  File "C:\Users\sumit.sahu\sap_ai_fraudguard_backend\app.py", line 589, in summarize_docs
+    result = summarise_documents(file_pairs, target_sentences=num_points)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: summarise_documents() got an unexpected keyword argument 'target_sentences'
+2026-04-15 13:10:39,985 - fraudguard - ERROR - Error during document summarisation
+Traceback (most recent call last):
+  File "C:\Users\sumit.sahu\sap_ai_fraudguard_backend\app.py", line 589, in summarize_docs
+    result = summarise_documents(file_pairs, target_sentences=num_points)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: summarise_documents() got an unexpected keyword argument 'target_sentences'
+2026-04-15 13:10:40,801 - fraudguard - ERROR - Error during document summarisation
+Traceback (most recent call last):
+  File "C:\Users\sumit.sahu\sap_ai_fraudguard_backend\app.py", line 589, in summarize_docs
+    result = summarise_documents(file_pairs, target_sentences=num_points)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: summarise_documents() got an unexpected keyword argument 'target_sentences'
+2026-04-15 15:00:08,899 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-15 15:00:38,986 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-15 15:00:59,868 - fraudguard - ERROR - Error during document summarisation
+Traceback (most recent call last):
+  File "C:\Users\sumit.sahu\sap_ai_fraudguard_backend\app.py", line 589, in summarize_docs
+    result = summarise_documents(file_pairs, num_points)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sumit.sahu\sap_ai_fraudguard_backend\src\doc_summarizer.py", line 414, in summarise_documents
+    raw = f.read()
+          ^^^^^^
+AttributeError: 'tuple' object has no attribute 'read'
+2026-04-15 15:08:29,599 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-15 15:09:09,141 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-15 15:15:19,135 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-15 15:15:46,582 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-15 15:21:34,945 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-15 15:22:06,360 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-15 15:24:52,634 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-15 15:25:27,664 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-15 15:32:56,242 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-15 15:34:41,480 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-15 15:36:50,428 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-15 15:37:24,626 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-27 20:16:27,703 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-27 20:16:54,452 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-27 20:17:33,885 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\SAP_Training_Data_4000_Cases.xlsx
+2026-04-27 20:17:41,586 - fraudguard - ERROR - Error while processing invoices
+Traceback (most recent call last):
+  File "C:\Users\sumit.sahu\sap_ai_fraudguard_backend\app.py", line 227, in process_invoices
+    df = load_invoices(save_path)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sumit.sahu\sap_ai_fraudguard_backend\src\data_loader.py", line 79, in load_invoices
+    raise ValueError(f"Missing required columns: {missing}")
+ValueError: Missing required columns: ['Vendor', 'InvoiceNumber', 'InvoiceDate', 'Amount', 'Currency', 'PONumber']
+2026-04-27 20:18:21,467 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sap_invoices_2000_demo.xlsx
+2026-04-27 20:18:22,537 - fraudguard - INFO - Applying rule-based checks
+2026-04-27 20:18:22,638 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-27 20:18:23,387 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-27 20:18:23,488 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-27 20:18:28,880 - fraudguard - INFO - Building RAG index for invoices
+2026-04-27 20:19:23,337 - fraudguard - INFO - RAG index built for 2000 invoices
+2026-04-28 06:57:26,012 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-28 06:58:44,171 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-28 07:01:04,711 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sap_invoices_2000_demo.xlsx
+2026-04-28 07:01:13,893 - fraudguard - INFO - Applying rule-based checks
+2026-04-28 07:01:14,004 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-28 07:01:14,692 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-28 07:01:14,814 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-28 07:01:24,293 - fraudguard - INFO - Building RAG index for invoices
+2026-04-28 07:02:06,574 - fraudguard - INFO - RAG index built for 2000 invoices
+2026-04-28 07:09:20,348 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.csv
+2026-04-28 07:09:20,518 - fraudguard - INFO - Applying rule-based checks
+2026-04-28 07:09:20,678 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-28 07:09:22,112 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-28 07:09:22,203 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-28 07:09:39,538 - fraudguard - INFO - Building RAG index for invoices
+2026-04-28 07:10:07,501 - fraudguard - INFO - RAG index built for 1000 invoices
+2026-04-28 07:32:14,054 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-28 07:40:58,326 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-28 07:42:33,775 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-28 07:43:01,058 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.csv
+2026-04-28 07:43:01,312 - fraudguard - INFO - Applying rule-based checks
+2026-04-28 07:43:01,488 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-28 07:43:02,641 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-28 07:43:02,808 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-28 07:43:10,003 - fraudguard - INFO - Building RAG index for invoices
+2026-04-28 07:43:37,814 - fraudguard - INFO - RAG index built for 1000 invoices
+2026-04-28 07:48:00,226 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.csv
+2026-04-28 07:48:00,413 - fraudguard - INFO - Applying rule-based checks
+2026-04-28 07:48:00,546 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-28 07:48:02,096 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-28 07:48:02,234 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-28 07:48:16,367 - fraudguard - INFO - Building RAG index for invoices
+2026-04-28 07:48:48,045 - fraudguard - INFO - RAG index built for 1000 invoices
+2026-04-28 07:51:08,661 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-28 07:51:56,262 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-28 07:53:07,964 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.csv
+2026-04-28 07:53:08,194 - fraudguard - INFO - Applying rule-based checks
+2026-04-28 07:53:08,376 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-28 07:53:09,865 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-28 07:53:09,995 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-28 07:53:23,059 - fraudguard - INFO - Building RAG index for invoices
+2026-04-28 07:53:57,584 - fraudguard - INFO - RAG index built for 1000 invoices
+2026-04-28 08:02:34,799 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-28 08:03:25,254 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-28 08:03:49,520 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.csv
+2026-04-28 08:03:49,686 - fraudguard - INFO - Applying rule-based checks
+2026-04-28 08:03:49,879 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-28 08:03:51,142 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-28 08:03:51,236 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-28 08:04:08,660 - fraudguard - INFO - Building RAG index for invoices
+2026-04-28 08:04:35,466 - fraudguard - INFO - RAG index built for 1000 invoices
+2026-04-28 08:08:16,730 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-28 08:09:06,069 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-28 08:09:21,352 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.csv
+2026-04-28 08:09:21,535 - fraudguard - INFO - Applying rule-based checks
+2026-04-28 08:09:21,671 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-28 08:09:22,777 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-28 08:09:22,928 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-28 08:09:30,758 - fraudguard - INFO - Building RAG index for invoices
+2026-04-28 08:09:59,181 - fraudguard - INFO - RAG index built for 1000 invoices
+2026-04-28 08:23:22,754 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-28 08:24:16,849 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-28 08:24:32,770 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.csv
+2026-04-28 08:24:32,959 - fraudguard - INFO - Applying rule-based checks
+2026-04-28 08:24:33,120 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-28 08:24:34,186 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-28 08:24:34,292 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-28 08:24:43,300 - fraudguard - INFO - Building RAG index for invoices
+2026-04-28 08:25:13,265 - fraudguard - INFO - RAG index built for 1000 invoices
+2026-04-28 14:05:24,085 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-28 14:05:54,512 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-28 14:06:17,964 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.csv
+2026-04-28 14:06:18,066 - fraudguard - INFO - Applying rule-based checks
+2026-04-28 14:06:18,179 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-28 14:06:18,806 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-28 14:06:18,864 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-28 14:06:23,596 - fraudguard - INFO - Building RAG index for invoices
+2026-04-28 14:06:49,996 - fraudguard - INFO - RAG index built for 1000 invoices
+2026-04-28 14:15:52,133 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-28 14:17:01,737 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-28 14:23:21,787 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-28 14:25:08,194 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-28 14:45:27,069 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-28 14:47:41,425 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-28 14:50:12,901 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-28 15:10:42,306 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-28 16:06:40,945 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-28 16:07:11,169 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-28 18:11:38,458 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-28 18:12:29,084 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-28 18:15:36,354 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.csv
+2026-04-28 18:15:36,808 - fraudguard - INFO - Applying rule-based checks
+2026-04-28 18:15:37,067 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-28 18:15:38,492 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-28 18:15:38,616 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-28 18:15:44,998 - fraudguard - INFO - Building RAG index for invoices
+2026-04-28 18:16:16,642 - fraudguard - INFO - RAG index built for 1000 invoices
+2026-04-28 20:05:08,861 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-29 14:36:14,945 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-29 14:36:44,713 - fraudguard - INFO - Starting SAP AI FraudGuard backend
+2026-04-29 14:37:53,228 - fraudguard - INFO - Loading invoices from C:\Users\sumit.sahu\sap_ai_fraudguard_backend\data\sample_invoices_1000.csv
+2026-04-29 14:37:53,351 - fraudguard - INFO - Applying rule-based checks
+2026-04-29 14:37:53,458 - fraudguard - INFO - Running Isolation Forest anomaly detection
+2026-04-29 14:37:54,167 - fraudguard - INFO - Combining rules and ML into risk scores
+2026-04-29 14:37:54,229 - fraudguard - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-04-29 14:37:59,056 - fraudguard - INFO - Building RAG index for invoices
+2026-04-29 14:38:22,121 - fraudguard - INFO - RAG index built for 1000 invoices
