@@ -1,37 +1,21 @@
 <div align="center">
 
-<img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwMCIgaGVpZ2h0PSIyMjAiIHZpZXdCb3g9IjAgMCAxMjAwIDIyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiByb2xlPSJpbWciPgogIDx0aXRsZT5TQVAgQUkgRnJhdWRHdWFyZDwvdGl0bGU+CgogIDwhLS0gQmFja2dyb3VuZCAtLT4KICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSIyMjAiIGZpbGw9IiMwRDExMTciLz4KCiAgPCEtLSBMZWZ0IGFjY2VudCBiYXIgLS0+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjUiIGhlaWdodD0iMjIwIiBmaWxsPSIjRTYzOTQ2Ii8+CgogIDwhLS0gU3VidGxlIGdlb21ldHJpYyBkZWNvcmF0aW9uIChyaWdodCBzaWRlKSAtLT4KICA8Y2lyY2xlIGN4PSIxMDQwIiBjeT0iNTAiICByPSIxNjAiIGZpbGw9IiMxNjFCMjIiIG9wYWNpdHk9IjAuOTUiLz4KICA8Y2lyY2xlIGN4PSIxMTAwIiBjeT0iMTgwIiByPSI5MCIgIGZpbGw9IiMxNjFCMjIiIG9wYWNpdHk9IjAuNyIvPgogIDxjaXJjbGUgY3g9IjkwMCIgIGN5PSIyMCIgIHI9IjUwIiAgZmlsbD0iIzE2MUIyMiIgb3BhY2l0eT0iMC41Ii8+CgogIDwhLS0gUmluZyBvdXRsaW5lcyAtLT4KICA8Y2lyY2xlIGN4PSIxMDQwIiBjeT0iNTAiICByPSIxNjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0U2Mzk0NiIgc3Ryb2tlLXdpZHRoPSIwLjgiIG9wYWNpdHk9IjAuMjUiLz4KICA8Y2lyY2xlIGN4PSIxMTAwIiBjeT0iMTgwIiByPSI5MCIgIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0U2Mzk0NiIgc3Ryb2tlLXdpZHRoPSIwLjYiIG9wYWNpdHk9IjAuMTgiLz4KICA8Y2lyY2xlIGN4PSI5MDAiICBjeT0iMjAiICByPSI1MCIgIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0U2Mzk0NiIgc3Ryb2tlLXdpZHRoPSIwLjUiIG9wYWNpdHk9IjAuMTUiLz4KCiAgPCEtLSBNYWluIHRpdGxlIC0tPgogIDx0ZXh0IHg9Ijc4IiB5PSI5MiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LCdTZWdvZSBVSScsc2Fucy1zZXJpZiIKICAgICAgICBmb250LXNpemU9IjY4IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjRkZGRkZGIiBsZXR0ZXItc3BhY2luZz0iLTEuNSI+U0FQIEFJIEZyYXVkR3VhcmQ8L3RleHQ+CgogIDwhLS0gU3VidGl0bGUgLS0+CiAgPHRleHQgeD0iNzgiIHk9IjEzNCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LCdTZWdvZSBVSScsc2Fucy1zZXJpZiIKICAgICAgICBmb250LXNpemU9IjIyIiBmb250LXdlaWdodD0iNDAwIiBmaWxsPSIjOEI5NDlFIiBsZXR0ZXItc3BhY2luZz0iMC40Ij4KICAgIEludGVsbGlnZW50IEludm9pY2UgRnJhdWQgRGV0ZWN0aW9uIFN5c3RlbQogIDwvdGV4dD4KCiAgPCEtLSBEaXZpZGVyIGxpbmUgLS0+CiAgPGxpbmUgeDE9Ijc4IiB5MT0iMTU3IiB4Mj0iNTYwIiB5Mj0iMTU3IiBzdHJva2U9IiMyMTI2MkQiIHN0cm9rZS13aWR0aD0iMS4yIi8+CgogIDwhLS0gVGFnIHBpbGxzIC0tPgogIDxyZWN0IHg9Ijc4IiAgeT0iMTcwIiB3aWR0aD0iMTMwIiBoZWlnaHQ9IjMwIiByeD0iNSIgZmlsbD0iIzE2MUIyMiIgc3Ryb2tlPSIjMzAzNjNEIiBzdHJva2Utd2lkdGg9IjEiLz4KICA8dGV4dCB4PSIxNDMiIHk9IjE5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9IjUwMCIKICAgICAgICBmaWxsPSIjOEI5NDlFIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5SdWxlIEVuZ2luZTwvdGV4dD4KCiAgPHJlY3QgeD0iMjIwIiB5PSIxNzAiIHdpZHRoPSIxNjAiIGhlaWdodD0iMzAiIHJ4PSI1IiBmaWxsPSIjMTYxQjIyIiBzdHJva2U9IiMzMDM2M0QiIHN0cm9rZS13aWR0aD0iMSIvPgogIDx0ZXh0IHg9IjMwMCIgeT0iMTkwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEzIiBmb250LXdlaWdodD0iNTAwIgogICAgICAgIGZpbGw9IiM4Qjk0OUUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPklzb2xhdGlvbiBGb3Jlc3QgTUw8L3RleHQ+CgogIDxyZWN0IHg9IjM5MiIgeT0iMTcwIiB3aWR0aD0iMTMwIiBoZWlnaHQ9IjMwIiByeD0iNSIgZmlsbD0iIzE2MUIyMiIgc3Ryb2tlPSIjMzAzNjNEIiBzdHJva2Utd2lkdGg9IjEiLz4KICA8dGV4dCB4PSI0NTciIHk9IjE5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9IjUwMCIKICAgICAgICBmaWxsPSIjOEI5NDlFIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5SQUcgUXVlcnk8L3RleHQ+CgogIDxyZWN0IHg9IjUzNCIgeT0iMTcwIiB3aWR0aD0iMTY1IiBoZWlnaHQ9IjMwIiByeD0iNSIgZmlsbD0iIzE2MUIyMiIgc3Ryb2tlPSIjMzAzNjNEIiBzdHJva2Utd2lkdGg9IjEiLz4KICA8dGV4dCB4PSI2MTYiIHk9IjE5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9IjUwMCIKICAgICAgICBmaWxsPSIjOEI5NDlFIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5WZW5kb3IgUmlzayAzNjA8L3RleHQ+CgogIDxyZWN0IHg9IjcxMSIgeT0iMTcwIiB3aWR0aD0iMTU1IiBoZWlnaHQ9IjMwIiByeD0iNSIgZmlsbD0iIzE2MUIyMiIgc3Ryb2tlPSIjMzAzNjNEIiBzdHJva2Utd2lkdGg9IjEiLz4KICA8dGV4dCB4PSI3ODgiIHk9IjE5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9IjUwMCIKICAgICAgICBmaWxsPSIjOEI5NDlFIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5GcmF1ZCBQbGF5Ym9vazwvdGV4dD4KCiAgPCEtLSBGb290ZXIgbGluZSAtLT4KICA8dGV4dCB4PSI3OCIgeT0iMjE1IiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjNDg0RjU4Ij4KICAgIEZpbmFuY2UgJmFtcDsgQVAgVGVhbSAgwrcgIEZZIDIwMjUgIMK3ICBQeXRob24gKyBGbGFzayArIElzb2xhdGlvbiBGb3Jlc3QgKyBSQUcKICA8L3RleHQ+Cgo8L3N2Zz4K" width="100%" alt="SAP AI FraudGuard"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0D1117&height=200&text=SAP%20AI%20FraudGuard&fontSize=58&fontColor=ffffff&fontAlignY=42&desc=Intelligent%20Invoice%20Fraud%20Detection%20System&descSize=20&descColor=8B949E&descAlignY=68" width="100%"/>
 
 <br/>
 
-<!-- ANIMATED TYPING BADGE ROW 1 -->
 [![Python](https://img.shields.io/badge/Python-3.10+-FFD43B?style=for-the-badge&logo=python&logoColor=blue)](https://python.org)
 [![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com)
 [![scikit-learn](https://img.shields.io/badge/Isolation_Forest-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white)](https://scikit-learn.org/)
 [![FAISS](https://img.shields.io/badge/FAISS-Vector_Search-0467DF?style=for-the-badge&logo=meta&logoColor=white)](https://faiss.ai/)
 [![RAG](https://img.shields.io/badge/RAG_Engine-AI_Query-8B5CF6?style=for-the-badge&logo=openai&logoColor=white)](#)
 
-<!-- BADGE ROW 2 -->
 [![Status](https://img.shields.io/badge/Status-Production_Ready-00C851?style=for-the-badge&logo=checkmarx&logoColor=white)](#)
-[![FY](https://img.shields.io/badge/Finance_%26_AP-FY_2025-FF3C3C?style=for-the-badge&logo=sap&logoColor=white)](#)
-[![Accuracy](https://img.shields.io/badge/Detection_Accuracy-95%25+-gold?style=for-the-badge&logo=target&logoColor=black)](#)
+[![FY](https://img.shields.io/badge/Finance_%26_AP-FY_2025-E63946?style=for-the-badge&logo=sap&logoColor=white)](#)
+[![Accuracy](https://img.shields.io/badge/Detection_Accuracy-95%25+-FFD700?style=for-the-badge)](#)
 [![License](https://img.shields.io/badge/License-MIT-28a745?style=for-the-badge)](LICENSE)
 
 <br/>
-
-<a href="#-getting-started">
-  <img src="https://img.shields.io/badge/⚡_Quick_Start-Get_Running_in_60s-FF3C3C?style=for-the-badge" />
-</a>
-&nbsp;
-<a href="#️-live-api-routes">
-  <img src="https://img.shields.io/badge/📡_API_Docs-View_All_Routes-1a1a2e?style=for-the-badge" />
-</a>
-&nbsp;
-<a href="#-business-impact">
-  <img src="https://img.shields.io/badge/📊_Business_Impact-See_Results-8B0000?style=for-the-badge" />
-</a>
-
-<br/><br/>
 
 > **`Rule Engine`** &nbsp;|&nbsp; **`Isolation Forest ML`** &nbsp;|&nbsp; **`RAG Query`** &nbsp;|&nbsp; **`Vendor Risk 360`** &nbsp;|&nbsp; **`Fraud Playbook`** &nbsp;|&nbsp; **`What-If Simulator`**
 >
@@ -49,7 +33,7 @@
 - [🛠️ Tech Stack](#️-tech-stack)
 - [📁 Project Structure](#-project-structure)
 - [🚀 Getting Started](#-getting-started)
-- [📡 Live API Routes](#️-live-api-routes)
+- [📡 Live API Routes](#-live-api-routes)
 - [📊 Business Impact](#-business-impact)
 - [⚖️ Before vs After](#️-before-vs-after)
 
@@ -127,7 +111,7 @@ Auditors can't ask *"Why is this invoice risky?"* — they manually filter sprea
 ║   UPLOAD     ║───▶║    RULES     ║───▶║   ML MODEL   ║───▶║   SCORING   ║───▶║  AI QUERY   ║
 ║   INVOICE    ║    ║   ENGINE     ║    ║   ANOMALY    ║    ║   & RANK    ║    ║    + RAG     ║
 ╠══════════════╣    ╠══════════════╣    ╠══════════════╣    ╠══════════════╣    ╠══════════════╣
-║data_loader.py║    ║rules_engine.py║   ║  ml_model.py ║    ║risk_scoring.py║   ║ rag_engine.py║
+║data_loader.py║    ║rules_engine.py║   ║  ml_model.py ║    ║risk_scoring.py║   ║rag_engine.py ║
 ╠══════════════╣    ╠══════════════╣    ╠══════════════╣    ╠══════════════╣    ╠══════════════╣
 ║ Excel / CSV  ║    ║ 23+ Business ║    ║  Isolation   ║    ║ HIGH/MEDIUM/ ║    ║ Ask in plain ║
 ║ Auto-detect  ║    ║ Rules: dupl, ║    ║  Forest AI   ║    ║  LOW + clear ║    ║ English. RAG ║
@@ -220,7 +204,7 @@ pip install -r requirements.txt
 
 > ⚠️ First run downloads `all-MiniLM-L6-v2` embedding model (~80MB). Ensure internet access.
 
-### 4️⃣ (Optional) Set Secret Key
+### 4️⃣ Set Secret Key (Optional)
 
 ```bash
 # Windows
@@ -236,11 +220,11 @@ export FLASK_SECRET_KEY=your-super-secret-key
 python app.py
 ```
 
-Open your browser → **`http://localhost:5000`**
+Open browser → **`http://localhost:5000`**
 
 ### 6️⃣ Load Sample Data
 
-Upload `data/sample_invoices_1000.xlsx` through the dashboard to instantly see fraud detection in action on 1,000 real invoices.
+Upload `data/sample_invoices_1000.xlsx` from the dashboard to instantly see fraud detection on 1,000 real invoices.
 
 ---
 
@@ -295,16 +279,15 @@ Upload `data/sample_invoices_1000.xlsx` through the dashboard to instantly see f
 
 </div>
 
-**Operational Impact:**
-- 🛑 **Fraud stopped before payment** — duplicate invoices, ghost vendors, bank change fraud, and split-amount tricks are caught before any money leaves
-- ⏱️ **AP team time cut by 80%** — no more manual spreadsheet filtering; system flags risky invoices in seconds
-- 📋 **Audit-ready explanations every time** — every flagged invoice gets a written reason; auditors get instant answers from the AI query engine
-- 🧪 **Controls tested before go-live** — What-If Simulator lets you test dual approval, new vendor block, and PO thresholds before rolling out policy
+- 🛑 **Fraud stopped before payment** — duplicate invoices, ghost vendors, bank change fraud, and split-amount tricks caught before any money leaves
+- ⏱️ **AP team time cut by 80%** — no manual spreadsheet filtering; system flags risky invoices in seconds
+- 📋 **Audit-ready explanations every time** — every flagged invoice gets a written reason; auditors get instant AI answers
+- 🧪 **Controls tested before go-live** — What-If Simulator lets you test dual approval, new vendor block, and PO thresholds before rollout
 
 **Financial & Strategic Impact:**
 - 💰 **Crores saved** — every HIGH-risk invoice stopped = direct financial saving
-- 🔄 **Zero duplicate pay** — Isolation Forest + duplicate rule ensure no invoice is paid twice, even with slight name or date variation
-- 🗂️ **100% audit trail** — every decision logged with risk score, reason, and rule triggered — full traceability for any internal or external audit
+- 🔄 **Zero duplicate pay** — Isolation Forest + duplicate rule ensure no invoice is paid twice
+- 🗂️ **100% audit trail** — every decision logged with risk score, reason, and rule triggered
 
 ---
 
@@ -331,7 +314,5 @@ Upload `data/sample_invoices_1000.xlsx` through the dashboard to instantly see f
 *Built for Finance & AP Teams · Powered by AI · Ready for Enterprise Scale*
 
 **`Fraud Stopped Before Payment · 95%+ Accuracy · AP Team Saved 80% Time`**
-
-<img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwMCIgaGVpZ2h0PSIyMjAiIHZpZXdCb3g9IjAgMCAxMjAwIDIyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiByb2xlPSJpbWciPgogIDx0aXRsZT5TQVAgQUkgRnJhdWRHdWFyZDwvdGl0bGU+CgogIDwhLS0gQmFja2dyb3VuZCAtLT4KICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSIyMjAiIGZpbGw9IiMwRDExMTciLz4KCiAgPCEtLSBMZWZ0IGFjY2VudCBiYXIgLS0+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjUiIGhlaWdodD0iMjIwIiBmaWxsPSIjRTYzOTQ2Ii8+CgogIDwhLS0gU3VidGxlIGdlb21ldHJpYyBkZWNvcmF0aW9uIChyaWdodCBzaWRlKSAtLT4KICA8Y2lyY2xlIGN4PSIxMDQwIiBjeT0iNTAiICByPSIxNjAiIGZpbGw9IiMxNjFCMjIiIG9wYWNpdHk9IjAuOTUiLz4KICA8Y2lyY2xlIGN4PSIxMTAwIiBjeT0iMTgwIiByPSI5MCIgIGZpbGw9IiMxNjFCMjIiIG9wYWNpdHk9IjAuNyIvPgogIDxjaXJjbGUgY3g9IjkwMCIgIGN5PSIyMCIgIHI9IjUwIiAgZmlsbD0iIzE2MUIyMiIgb3BhY2l0eT0iMC41Ii8+CgogIDwhLS0gUmluZyBvdXRsaW5lcyAtLT4KICA8Y2lyY2xlIGN4PSIxMDQwIiBjeT0iNTAiICByPSIxNjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0U2Mzk0NiIgc3Ryb2tlLXdpZHRoPSIwLjgiIG9wYWNpdHk9IjAuMjUiLz4KICA8Y2lyY2xlIGN4PSIxMTAwIiBjeT0iMTgwIiByPSI5MCIgIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0U2Mzk0NiIgc3Ryb2tlLXdpZHRoPSIwLjYiIG9wYWNpdHk9IjAuMTgiLz4KICA8Y2lyY2xlIGN4PSI5MDAiICBjeT0iMjAiICByPSI1MCIgIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0U2Mzk0NiIgc3Ryb2tlLXdpZHRoPSIwLjUiIG9wYWNpdHk9IjAuMTUiLz4KCiAgPCEtLSBNYWluIHRpdGxlIC0tPgogIDx0ZXh0IHg9Ijc4IiB5PSI5MiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LCdTZWdvZSBVSScsc2Fucy1zZXJpZiIKICAgICAgICBmb250LXNpemU9IjY4IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjRkZGRkZGIiBsZXR0ZXItc3BhY2luZz0iLTEuNSI+U0FQIEFJIEZyYXVkR3VhcmQ8L3RleHQ+CgogIDwhLS0gU3VidGl0bGUgLS0+CiAgPHRleHQgeD0iNzgiIHk9IjEzNCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LCdTZWdvZSBVSScsc2Fucy1zZXJpZiIKICAgICAgICBmb250LXNpemU9IjIyIiBmb250LXdlaWdodD0iNDAwIiBmaWxsPSIjOEI5NDlFIiBsZXR0ZXItc3BhY2luZz0iMC40Ij4KICAgIEludGVsbGlnZW50IEludm9pY2UgRnJhdWQgRGV0ZWN0aW9uIFN5c3RlbQogIDwvdGV4dD4KCiAgPCEtLSBEaXZpZGVyIGxpbmUgLS0+CiAgPGxpbmUgeDE9Ijc4IiB5MT0iMTU3IiB4Mj0iNTYwIiB5Mj0iMTU3IiBzdHJva2U9IiMyMTI2MkQiIHN0cm9rZS13aWR0aD0iMS4yIi8+CgogIDwhLS0gVGFnIHBpbGxzIC0tPgogIDxyZWN0IHg9Ijc4IiAgeT0iMTcwIiB3aWR0aD0iMTMwIiBoZWlnaHQ9IjMwIiByeD0iNSIgZmlsbD0iIzE2MUIyMiIgc3Ryb2tlPSIjMzAzNjNEIiBzdHJva2Utd2lkdGg9IjEiLz4KICA8dGV4dCB4PSIxNDMiIHk9IjE5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9IjUwMCIKICAgICAgICBmaWxsPSIjOEI5NDlFIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5SdWxlIEVuZ2luZTwvdGV4dD4KCiAgPHJlY3QgeD0iMjIwIiB5PSIxNzAiIHdpZHRoPSIxNjAiIGhlaWdodD0iMzAiIHJ4PSI1IiBmaWxsPSIjMTYxQjIyIiBzdHJva2U9IiMzMDM2M0QiIHN0cm9rZS13aWR0aD0iMSIvPgogIDx0ZXh0IHg9IjMwMCIgeT0iMTkwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEzIiBmb250LXdlaWdodD0iNTAwIgogICAgICAgIGZpbGw9IiM4Qjk0OUUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPklzb2xhdGlvbiBGb3Jlc3QgTUw8L3RleHQ+CgogIDxyZWN0IHg9IjM5MiIgeT0iMTcwIiB3aWR0aD0iMTMwIiBoZWlnaHQ9IjMwIiByeD0iNSIgZmlsbD0iIzE2MUIyMiIgc3Ryb2tlPSIjMzAzNjNEIiBzdHJva2Utd2lkdGg9IjEiLz4KICA8dGV4dCB4PSI0NTciIHk9IjE5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9IjUwMCIKICAgICAgICBmaWxsPSIjOEI5NDlFIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5SQUcgUXVlcnk8L3RleHQ+CgogIDxyZWN0IHg9IjUzNCIgeT0iMTcwIiB3aWR0aD0iMTY1IiBoZWlnaHQ9IjMwIiByeD0iNSIgZmlsbD0iIzE2MUIyMiIgc3Ryb2tlPSIjMzAzNjNEIiBzdHJva2Utd2lkdGg9IjEiLz4KICA8dGV4dCB4PSI2MTYiIHk9IjE5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9IjUwMCIKICAgICAgICBmaWxsPSIjOEI5NDlFIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5WZW5kb3IgUmlzayAzNjA8L3RleHQ+CgogIDxyZWN0IHg9IjcxMSIgeT0iMTcwIiB3aWR0aD0iMTU1IiBoZWlnaHQ9IjMwIiByeD0iNSIgZmlsbD0iIzE2MUIyMiIgc3Ryb2tlPSIjMzAzNjNEIiBzdHJva2Utd2lkdGg9IjEiLz4KICA8dGV4dCB4PSI3ODgiIHk9IjE5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9IjUwMCIKICAgICAgICBmaWxsPSIjOEI5NDlFIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5GcmF1ZCBQbGF5Ym9vazwvdGV4dD4KCiAgPCEtLSBGb290ZXIgbGluZSAtLT4KICA8dGV4dCB4PSI3OCIgeT0iMjE1IiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjNDg0RjU4Ij4KICAgIEZpbmFuY2UgJmFtcDsgQVAgVGVhbSAgwrcgIEZZIDIwMjUgIMK3ICBQeXRob24gKyBGbGFzayArIElzb2xhdGlvbiBGb3Jlc3QgKyBSQUcKICA8L3RleHQ+Cgo8L3N2Zz4K" width="100%" alt="footer"/>
 
 </div>
